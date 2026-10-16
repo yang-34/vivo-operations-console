@@ -266,3 +266,66 @@ test('官网成功路径无需先输入验证码并立即显示激活码',async(
   await expect(page.locator('.fulfillment')).toContainText('DEMO-NO-SMS')
   await expect(page.locator('.fulfillment')).toContainText('激活码')
 })
+
+test('同款商品合并展示，切换兑换城市后重新预检并提交对应商品',async({page})=>{
+  const offers=[
+    {id:'city-a:grouped',city:'示例甲城',price:5,stock:0},
+    {id:'city-b:grouped',city:'示例乙城',price:8,stock:3},
+    {id:'city-c:grouped',city:'示例丙城',price:12,stock:6},
+  ]
+  await page.route('**/api/products?*',route=>route.fulfill({json:{items:[{id:'city-b:grouped',name:'城市合并测试礼券',category:'生活礼券',price:8,price_max:12,stock:6,art:'ticket',variant_count:3,city_count:3,available_city_count:2,has_city_variants:true}],total:1,categories:['生活礼券']}}))
+  await page.route('**/api/products/*/variants',route=>route.fulfill({json:{items:offers}}))
+  await page.route('**/api/accounts?*',route=>route.fulfill({json:{items:[{id:1,nickname:'演示兑换账号',points:100}],total:1}}))
+  const previews:string[]=[];const orders:Record<string,unknown>[]=[]
+  await page.route('**/api/redemptions/preflight',route=>{
+    const body=route.request().postDataJSON();previews.push(body.product_id)
+    const selected=offers.find(offer=>offer.id===body.product_id)!
+    return route.fulfill({json:{id:'proof-'+selected.id,price:selected.price,points:100,stock:selected.stock,redemption_kind:'standard'}})
+  })
+  await page.route('**/api/redemptions',route=>{
+    orders.push(route.request().postDataJSON())
+    return route.fulfill({json:{id:'DEMO-CITY-ORDER',status:'success',message:'演示订单',delivery:'演示券码'}})
+  })
+  await page.goto('/?mode=live#/products')
+  await expect(page.locator('.product-card')).toHaveCount(1)
+  await expect(page.locator('.product-card')).toContainText('兑换时选择城市')
+  await page.getByRole('button',{name:'立即兑换'}).click()
+  const modal=page.getByRole('dialog')
+  await expect(modal.getByRole('button',{name:'核对实时价格',exact:true})).toBeDisabled()
+  await modal.getByRole('combobox',{name:'兑换城市',exact:true}).press('ArrowDown')
+  await expect(page.locator('.ant-select-item-option-disabled').filter({hasText:'示例甲城'})).toBeVisible()
+  await page.locator('.ant-select-item-option').filter({hasText:'示例乙城'}).click()
+  await expect(modal.locator('.checkout-item')).toContainText('库存 3')
+  await modal.getByRole('combobox',{name:'兑换账号',exact:true}).click()
+  await page.locator('.ant-select-item-option').filter({hasText:'演示兑换账号'}).click()
+  await modal.getByRole('button',{name:'核对实时价格',exact:true}).click()
+  await expect(modal.getByRole('button',{name:'确认兑换 · 8 积分'})).not.toHaveClass(/ant-btn-loading/)
+  await modal.getByRole('combobox',{name:'兑换城市',exact:true}).press('ArrowDown')
+  await page.locator('.ant-select-item-option').filter({hasText:'示例丙城'}).click()
+  await expect(modal.locator('.checkout-check')).toHaveCount(0)
+  await expect(modal.getByRole('button',{name:'核对实时价格',exact:true})).toBeEnabled()
+  await modal.getByRole('button',{name:'核对实时价格',exact:true}).click()
+  await expect(modal.getByRole('button',{name:'确认兑换 · 12 积分'})).not.toHaveClass(/ant-btn-loading/)
+  await page.screenshot({path:'artifacts/product-city-selection.png',fullPage:true,animations:'disabled'})
+  await modal.getByRole('button',{name:'确认兑换 · 12 积分'}).click()
+  await expect(modal.getByRole('heading',{name:'兑换成功',exact:true})).toBeVisible()
+  expect(previews).toEqual(['city-b:grouped','city-c:grouped'])
+  expect(orders).toHaveLength(1)
+  expect(orders[0].product_id).toBe('city-c:grouped')
+  expect(orders[0].preflight_id).toBe('proof-city-c:grouped')
+})
+
+test('城市选项加载失败时阻止兑换，重试成功后可继续选择',async({page})=>{
+  await page.route('**/api/products?*',route=>route.fulfill({json:{items:[{id:'demo-city-load',name:'城市加载测试礼券',price:5,stock:3,art:'ticket',variant_count:2,city_count:2,has_city_variants:true}],total:1,categories:[]}}))
+  let attempts=0
+  await page.route('**/api/products/*/variants',route=>++attempts===1?route.fulfill({status:503,json:{error:'演示城市加载失败'}}):route.fulfill({json:{items:[{id:'demo-city-loaded',city:'示例甲城',price:5,stock:3}]}}))
+  await page.goto('/#/products')
+  await page.getByRole('button',{name:'立即兑换'}).click()
+  const modal=page.getByRole('dialog')
+  await expect(modal).toContainText('演示城市加载失败')
+  await expect(modal.getByRole('button',{name:/确认兑换/})).toBeDisabled()
+  await modal.getByRole('button',{name:'重新加载',exact:true}).click()
+  await expect(modal.getByRole('combobox',{name:'兑换城市',exact:true})).toHaveValue('')
+  await expect(modal.locator('.ant-select-selection-item').filter({hasText:'示例甲城'})).toBeVisible()
+  await expect(modal.getByRole('button',{name:'确认兑换 · 5 积分',exact:true})).toBeEnabled()
+})

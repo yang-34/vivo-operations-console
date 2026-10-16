@@ -259,25 +259,18 @@ def export_batch(bid):
 @app.get('/api/products')
 def products():
     page,size = page_args()
-    terms,values = [],[]
-    for key in ('category','source'):
-        if request.args.get(key) and request.args[key]!='all':
-            terms.append(key+'=?')
-            values.append(request.args[key])
-    if request.args.get('q'):
-        terms.append('(name LIKE ? OR description LIKE ?)')
-        values.extend(['%'+request.args['q']+'%']*2)
-    if request.args.get('stock')=='1':
-        terms.append('stock>0')
-    where = ' WHERE '+' AND '.join(terms) if terms else ''
-    order = {'price_asc':'price ASC','price_desc':'price DESC','stock':'stock DESC'}.get(request.args.get('sort'),'rowid ASC')
-    with db(mode()) as c:
-        total = c.execute('SELECT count(*) FROM products'+where,values).fetchone()[0]
-        rows = [dict(r) for r in c.execute('SELECT * FROM products'+where+' ORDER BY '+order+' LIMIT ? OFFSET ?',[*values,size,(page-1)*size])]
-        categories = [r[0] for r in c.execute('SELECT DISTINCT category FROM products')]
-    for r in rows:
-        r.pop('metadata',None)
-    return jsonify(items=rows,total=total,categories=categories)
+    from product_catalog import catalogue_page
+    return jsonify(catalogue_page(mode(),page,size,category=request.args.get('category','all'),
+        source=request.args.get('source','all'),query=request.args.get('q',''),
+        in_stock=request.args.get('stock')=='1',sort=request.args.get('sort','default')))
+
+
+@app.get('/api/products/<path:pid>/variants')
+def product_variants(pid):
+    from product_catalog import variants
+    result=variants(mode(),pid)
+    if result is None:return jsonify(error='商品不存在'),404
+    return jsonify(result)
 
 
 @app.post('/api/products/import-reference')
@@ -291,7 +284,8 @@ def import_products():
 def product_detail(pid):
     with db(mode()) as c:row=c.execute('SELECT * FROM products WHERE id=?',(pid,)).fetchone()
     if not row:return jsonify(error='商品不存在'),404
-    item=dict(row);item.pop('metadata',None)
+    from product_catalog import city
+    item=dict(row);item['city']=city(item);item.pop('metadata',None)
     return jsonify(item)
 
 

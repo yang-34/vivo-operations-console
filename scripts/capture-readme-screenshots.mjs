@@ -35,6 +35,12 @@ from store import db, encrypt, now
 app.setup()
 with db('demo') as c:
     c.execute("UPDATE accounts SET nickname='演示账号 ' || printf('%04d',id), phone='', source='演示账号池'")
+    c.execute('UPDATE products SET metadata=? WHERE id=?', ('{"itemId":"readme-coffee","city":"全国"}', 'demo-coffee'))
+    for suffix,city,price,stock in [('a','示例甲城',650,80),('b','示例乙城',720,0)]:
+        c.execute('''INSERT INTO products(id,name,category,price,stock,art,description,source,metadata,updated_at)
+            SELECT ?,name,category,?,?,art,?,'demo',?,? FROM products WHERE id='demo-coffee' ''',
+            (f'demo-coffee-city-{suffix}',price,stock,city+' · 演示商品',
+             '{"itemId":"readme-coffee","city":"'+city+'"}',now()))
     for i in range(1,9):
         status = 'healthy' if i <= 6 else ('failed' if i == 7 else 'unverified')
         c.execute('INSERT INTO proxies(fingerprint,url,source,status,exit_ip,latency_ms,entry_latency_ms,checked_at,created_at,expires_at) VALUES(?,?,?,?,?,?,?,?,?,?)',

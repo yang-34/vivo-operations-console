@@ -115,7 +115,7 @@ function Products(){
   const {data,error,loading}=useLoad(`/products?category=${encodeURIComponent(category)}&q=${encodeURIComponent(q)}&stock=${stock?'1':'0'}&sort=${sort}&page=${page}&page_size=12`)
   async function importIt(){setBusy(true);try{const res=await api('/products/import-reference',mode,{method:'POST',body:'{}'});reload();message.success(`已导入 ${number(res.imported)} 条商品库存，包含各城市商品`)}catch(e){message.error((e as Error).message)}finally{setBusy(false)}}
   return <div className="catalog-page">
-    <PageHead title="积分商城" description="浏览积分商品，选择账号兑换。可按商品名称或适用城市查找。">
+    <PageHead title="积分商城" description="同款商品合并展示，兑换时选择适用城市。可按商品名称或城市查找。">
       {mode==='live'&&<Button icon={<CloudDownloadOutlined/>} loading={busy} onClick={importIt}>导入商品快照</Button>}
       <LiveCatalogButton/><Button icon={<ReloadOutlined/>} onClick={reload}>刷新列表</Button>
     </PageHead>
@@ -137,13 +137,15 @@ function Products(){
             const hasStock=Number(p.stock)>0
             const description=String(p.description||'')
             const region=description.includes('·')?description.split('·')[0].trim():''
+            const regions=Number(p.city_count||1)>1
+            const regionText=regions?`覆盖 ${number(p.city_count)} 个地区 · 兑换时选择城市`:region?`适用地区：${region}`:description||'查看兑换商品详情'
             return <article className={`product-card${hasStock?'':' is-sold-out'}`} key={p.id} aria-label={p.name}>
               <div className="product-card-header"><Tag className="product-category">{p.category}</Tag>{!hasStock&&<span className="catalog-state">暂时兑完</span>}</div>
               <div className="product-visual"><ProductArt art={p.art} image={p.image} name={p.name}/></div>
               <div className="product-copy">
                 <h3 title={p.name}>{p.name}</h3>
-                <p title={description}>{region?`适用地区：${region}`:description||'查看兑换商品详情'}</p>
-                <div className="product-price"><strong>{number(p.price)}<small>积分</small></strong><span className={hasStock?'stock-available':'stock-empty'}><i/>{hasStock?`库存 ${number(p.stock)}`:'暂无库存'}</span></div>
+                <p title={regionText}>{regionText}</p>
+                <div className="product-price"><strong>{number(p.price)}<small>积分{Number(p.price_max)>Number(p.price)?'起':''}</small></strong><span className={hasStock?'stock-available':'stock-empty'}><i/>{hasStock?regions?`${number(p.available_city_count)} 个地区可兑`:`库存 ${number(p.stock)}`:'暂无库存'}</span></div>
                 <Button block type={hasStock?'primary':'default'} disabled={!hasStock} onClick={()=>setProduct(p)}>{hasStock?'立即兑换':'暂时兑完'}{hasStock?<ArrowRightOutlined/>:null}</Button>
               </div>
             </article>
