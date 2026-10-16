@@ -1,0 +1,18 @@
+{
+  "origin": "用户提供的本地协议实现",
+  "prepared_files": [
+    "common.py",
+    "api.py"
+  ],
+  "external_runtime_dependencies": [],
+  "removed": [
+    "脚本入口与批次编排",
+    "内置面板地址与代理认证",
+    "内置 AI 密钥及私有端点",
+    "原目录缓存路径"
+  ],
+  "source_sha256": {
+    "vivo_common.py": "b37bdde8192a6ea7f720d18b01e97f1c580dc8c94cee2515e6f716eabf5c97bc",
+    "vivo_task.py": "17b4eab0f9e8f040c0fd1e3c44ca90c76b539659ba5dc1e91835f661c66ad56a"
+  }
+}

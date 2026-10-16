@@ -1,0 +1,149 @@
+{
+  "vivo.py": {
+    "sha256": "bd60c407c5627ea83da5fe34026b1eb5646345365fb6452bd0ede0cc2405611d",
+    "bundled_sha256": "971a4848c4a8c9826ca4a46f5d5ac26c73def9f8f88d05918c015b972a6edb7e",
+    "source": "TaskFlow/modules/platforms/vivo.py"
+  },
+  "vivo_activities.py": {
+    "sha256": "b84709c59a1063d192d6be305a44368862f2445dd30c8d9ea3a404334867ed5b",
+    "bundled_sha256": "8bfc056a71256a7afa698c53fcb3013d5130183e3c9454d4bcf55ce9978d19ac",
+    "source": "TaskFlow/modules/platforms/vivo_activities.py"
+  },
+  "vivo_activity_market.py": {
+    "sha256": "3e0e3de0c3e97eb7fa0352d5417f5f41ad0dad601f85634e971ba5a74a935c74",
+    "bundled_sha256": "5c24c81f6e53e5acc6e46dcbe1987610a06d726bd552d20028505368804e0096",
+    "source": "TaskFlow/modules/platforms/vivo_activity_market.py"
+  },
+  "vivo_activity_tasks.py": {
+    "sha256": "bb55ddf2023d9fa7910c91c5490cb34c6c7298ff3fadb0c82c7720664fe6ec77",
+    "bundled_sha256": "e399c547770c85edd945eb0a7c943410969745eff4552d2c7c5e73a1ddc6dac4",
+    "source": "TaskFlow/modules/platforms/vivo_activity_tasks.py"
+  },
+  "vivo_appointments.py": {
+    "sha256": "0de6dd5fa41a17845d0faba8083e0f6f4cf04cc88bec33a90e3485b6361ec950",
+    "bundled_sha256": "554fb73ba277089431a0570b2b47ddd175e3b040800f2850e8e9bd37484acae8",
+    "source": "TaskFlow/modules/platforms/vivo_appointments.py"
+  },
+  "vivo_browser_tasks.py": {
+    "sha256": "0cc25ae68afb1664c2dd91f9b14aa34126f2ade68af632bd8772500fa694a49f",
+    "bundled_sha256": "a6bd31196a36d69eb07a6b4aa60a79581e1ee6d4f4e58b55f33a5e0a01a42820",
+    "source": "TaskFlow/modules/platforms/vivo_browser_tasks.py"
+  },
+  "vivo_business_signs.py": {
+    "sha256": "b45533f993f4896d10ffc2cb46ca5e84815c90a2284c3f42b7d04d1c38025542",
+    "bundled_sha256": "dc0f01a3dd26ca637af5f73608cbf84b6c088274dfc4ae7d7a3eba582c0b8ca3",
+    "source": "TaskFlow/modules/platforms/vivo_business_signs.py"
+  },
+  "vivo_client_tasks.py": {
+    "sha256": "9a31eafed4653a36bf3665c3edca4ac0f9cf56c46136ebf51d424e0f79b975fd",
+    "bundled_sha256": "36a014847a0b841f75fa1b12c0986af31f9160b66ef3460acafc087678ed1751",
+    "source": "TaskFlow/modules/platforms/vivo_client_tasks.py"
+  },
+  "vivo_device_context.py": {
+    "sha256": "fb6d265cbb878130231c6638285bbd141ee32d5e1e2d7088b2f89097fd5f6628",
+    "bundled_sha256": "dbaed5e1e20b0e59eb12df7c7c8ee80aacf87c67f19732641ed195d081c776bf",
+    "source": "TaskFlow/modules/platforms/vivo_device_context.py"
+  },
+  "vivo_earn.py": {
+    "sha256": "8c051b67faa303a112c9cf438d9805bf3b342b9889d33a04b7317a22d98dea18",
+    "bundled_sha256": "f3e181aa6ea23a839ccedab27bd1c9fb1c50be10877d37cab2929ff047d00b62",
+    "source": "TaskFlow/modules/platforms/vivo_earn.py"
+  },
+  "vivo_game_reservation.py": {
+    "sha256": "71cf9fc88dabf08472eae7c539a3fa66cdf7a794a5563ca861cba7ede548b1ef",
+    "bundled_sha256": "f53cc4d685110daae3593d5d2b808856eaf3911b4019a9271b9e5e0fa5a8cc04",
+    "source": "TaskFlow/modules/platforms/vivo_game_reservation.py"
+  },
+  "vivo_native_actions.py": {
+    "sha256": "7964d63f933e251db9493ae78b32b8119f8029eebe695d243ec5ab77f48c1ba3",
+    "bundled_sha256": "30ad5344ccb5b0f386c81b01594da8d7736ab794d49b34b26356f2171b6ba08e",
+    "source": "TaskFlow/modules/platforms/vivo_native_actions.py"
+  },
+  "vivo_native_earn.py": {
+    "sha256": "2b49d46117774b33899c5a1aa405a17f69b24f78a4b906a3ebd48a9b166975c1",
+    "bundled_sha256": "2c9f1fc270ebdb59752000cde3742874e4d345d2df0d94c2cf4cf7b8a4b438ff",
+    "source": "TaskFlow/modules/platforms/vivo_native_earn.py"
+  },
+  "vivo_native_updates.py": {
+    "sha256": "8bc2a8f5718da7811eb71e07739d4a72dcf1cfea655a625655cb24a88ef5d742",
+    "bundled_sha256": "22f7c30adee9e0cec3e7fe74f5fd2f58ec852f09014f6819bbaa11b1385c994a",
+    "source": "TaskFlow/modules/platforms/vivo_native_updates.py"
+  },
+  "vivo_news.py": {
+    "sha256": "8cec614eab65961b51756b590514cf18407e41c27d1125116d8e712329c5a217",
+    "bundled_sha256": "757e086e50a70b8db63fc0f030e95ee65d634ee584595b14b785a7a64542d848",
+    "source": "TaskFlow/modules/platforms/vivo_news.py"
+  },
+  "vivo_rewards.py": {
+    "sha256": "6991f4737cd4fd4392c68e8cf0c21706cb6ba80b4ff1014cd6c5d0ca1dc706de",
+    "bundled_sha256": "74f179479e858c49bffc9eeb636a3d5b867cb47ca900a916de130cfe8bbb1430",
+    "source": "TaskFlow/modules/platforms/vivo_rewards.py"
+  },
+  "vivo_sdk_tasks.py": {
+    "sha256": "36d290fb008a0daa89b5d6fd5ce6e03dd6ab347001734f14dbf2c3ca3c7abb0d",
+    "bundled_sha256": "57adaa3005dcee322cf49f04cb3ead7e1a30c737bd0abbaff0b6b5280058dea5",
+    "source": "TaskFlow/modules/platforms/vivo_sdk_tasks.py"
+  },
+  "vivo_shop_actions.py": {
+    "sha256": "bc31141581ca6f19f500f5407a4d98727be3ef0a62f5748415c36b28e7d83fe7",
+    "bundled_sha256": "0b1d0046596871e1bf6a9f0a036c7540298462bd129fd3f0126f3cc971114dfa",
+    "source": "TaskFlow/modules/platforms/vivo_shop_actions.py"
+  },
+  "vivo_source_flows.py": {
+    "sha256": "485d1c1306eac03caab3ba3a692c153228aee1ab5c390e079124c38f51b82147",
+    "bundled_sha256": "5a90b78c66cc775dddda27d365949de9ed93b93adc6b9857017ba187b3ac44b7",
+    "source": "TaskFlow/modules/platforms/vivo_source_flows.py"
+  },
+  "vivo_source_market.py": {
+    "sha256": "6b0854689228701971c25d587fbc71112b8e1735061dc6187cc3c0883ef8bed1",
+    "bundled_sha256": "cead6ea5bb7821be57e871f68c44bb413bd8d3df70f6074c370599bac6d4be88",
+    "source": "TaskFlow/modules/platforms/vivo_source_market.py"
+  },
+  "vivo_store_location.py": {
+    "sha256": "ed99e7754270868d1a0a51232a7bfd3eb8fcd635f08fdc82bdc516a9714bd84b",
+    "bundled_sha256": "2887aad7837c3f940d5f920c9fcbaac926fbe120c79a59392a45a668d67db52b",
+    "source": "TaskFlow/modules/platforms/vivo_store_location.py"
+  },
+  "vivo_updates.py": {
+    "sha256": "c76dc540769dcb6ef12573a40847f2e29f608984c03f38246dfec065c525f4a7",
+    "bundled_sha256": "a637049c0e2d5c0cebd4b8d2e3f4631a9d7ad8d77a4ceb0770d557957cf7c226",
+    "source": "TaskFlow/modules/platforms/vivo_updates.py"
+  },
+  "vendor\\vivo\\taskcenter.py": {
+    "sha256": "f05b02c0d0564bed59166c90e08c01f1292841adf6ee3a77e16d160c2432b408",
+    "bundled_sha256": "038b76b31a16aa99d1a3d422b11554bf7063c1feeffe7bb1ec163f1d29dd4a1b",
+    "source": "TaskFlow/modules/platforms/vendor\\vivo\\taskcenter.py"
+  },
+  "vendor\\vivo\\jvq.py": {
+    "sha256": "e823f1157e71beb334a8e02c0bd8f11c8bdf63157524e8e3a01a42b2a98f8a36",
+    "bundled_sha256": "3cb93ff506b4daa392150c2b46c979ecc867420f3c26b82ec743693837b890d1",
+    "source": "TaskFlow/modules/platforms/vendor\\vivo\\jvq.py"
+  },
+  "vendor\\vivo\\wave.py": {
+    "sha256": "b7ce059be0ed385f764d4303b145f6271aa87d8c4569278029915d27dc348cc7",
+    "bundled_sha256": "5aa6f5988cbcc782cf2db9be6db784d56cf8415035a45f98de1ecd4807fee9d6",
+    "source": "TaskFlow/modules/platforms/vendor\\vivo\\wave.py"
+  },
+  "vendor\\vivo\\maodun.py": {
+    "sha256": "0032c7b5c2e34ab84c45140b9327decb78ece2f6d3b5ea18c74327c95f08085c",
+    "bundled_sha256": "ee6bfb96dde766af4811264ea8c68ad550bdc0444ac5ef84974fbe437cb267a2",
+    "source": "TaskFlow/modules/platforms/vendor\\vivo\\maodun.py"
+  },
+  "vendor\\vivo\\__init__.py": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bundled_sha256": "18e92e7e8ef9e4e8109f98a25864ec50c51cdb56795609410e9124ba5e37a8e7",
+    "source": "TaskFlow/modules/platforms/vendor\\vivo\\__init__.py"
+  },
+  "scripts/vivo-native-identity.js": {
+    "sha256": "91cb2fb501c65366b273efd71f1ab9cb1e949c198ea16ebcd0ffc301f0390cab",
+    "source": "TaskFlow/scripts/vivo-native-identity.js"
+  },
+  "scripts/vivo-browser-identity.js": {
+    "sha256": "14d704c8467fbb5176da8a6eafd37daee354891fa9b34d06ef54abf242a05aec",
+    "source": "TaskFlow/scripts/vivo-browser-identity.js"
+  },
+  "scripts/vivo-account-identity.js": {
+    "sha256": "d710832d9e6c99763e38fa584fb55226b64ed3a57313dd0f498910469fa2eccc",
+    "source": "TaskFlow/scripts/vivo-account-identity.js"
+  }
+}

@@ -1,0 +1,45 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:${VIVO_WEB_PORT:-8100}:8100"
+    environment:
+      VIVO_BIND_HOST: 0.0.0.0
+      VIVO_WEB_PORT: 8100
+      VIVO_DATA_DIR: /app/data
+      VIVO_ADMIN_PASSWORD: ${VIVO_ADMIN_PASSWORD:-}
+      VIVO_SECURE_COOKIE: ${VIVO_SECURE_COOKIE:-0}
+      VIVO_TRUST_PROXY: ${VIVO_TRUST_PROXY:-0}
+    volumes:
+      - ./data:/app/data
+    stop_grace_period: 60s
+    pids_limit: 1024
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; r=urllib.request.urlopen('http://127.0.0.1:8100/login',timeout=5); assert r.headers.get('X-Vivo-Service')=='vivo-operations-console'"]
+      interval: 30s
+      timeout: 8s
+      retries: 3
+      start_period: 30s
+  caddy:
+    image: caddy:2-alpine
+    profiles: [https]
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    environment:
+      VIVO_DOMAIN: ${VIVO_DOMAIN:-localhost}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web:
+        condition: service_healthy
+volumes:
+  caddy_data:
+  caddy_config:

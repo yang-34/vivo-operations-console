@@ -1,0 +1,54 @@
+.system-settings { min-width: 0; }
+.system-settings .page-head { align-items: flex-start; }
+.settings-capacity { display: grid; grid-template-columns: 1fr 1fr 1fr 1.8fr; gap: 20px; align-items: center; padding: 22px 24px; border: 1px solid #e7ebf2; border-radius: 9px; background: #fff; margin-bottom: 22px; }
+.settings-capacity > div { min-width: 0; border-right: 1px solid #edf0f5; }
+.settings-capacity > div > span { display: block; color: #8894a5; font-size: 12px; margin-bottom: 9px; }
+.settings-capacity strong { color: #26384f; font-size: 25px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.settings-capacity strong small { color: #a1aab6; font-size: 17px; font-weight: 400; padding: 0 4px; }
+.settings-capacity > p { display: flex; gap: 10px; color: #61748f; font-size: 12px; line-height: 22px; }
+.settings-capacity > p > .anticon { color: #31977b; font-size: 17px; padding-top: 2px; }
+.settings-capacity > p b { color: #2856dc; font-size: 15px; }
+.settings-capacity > p small { display: block; color: #99a3b1; font-size: 11px; }
+.settings-workspace { display: grid; grid-template-columns: minmax(0,1fr) 320px; align-items: start; gap: 22px; }
+.settings-section-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-bottom: 1px solid #edf0f5; }
+.settings-section-head h2 { color: #2e3d53; font-size: 14px; font-weight: 600; }
+.settings-section-head p { color: #95a0af; font-size: 12px; line-height: 20px; margin-top: 5px; }
+.settings-section-head .ant-tag { flex-shrink: 0; margin: 0; font-size: 11px; }
+.settings-config > .ant-form > .ant-tabs > .ant-tabs-nav { margin: 0; padding: 0 24px; }
+.settings-config .ant-tabs-tab { padding: 17px 0; font-size: 13px; }
+.settings-tab-body { padding: 24px; }
+.settings-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px 28px; }
+.system-settings .ant-form-item { min-width: 0; margin-bottom: 18px; }
+.system-settings .ant-form-item-label > label { font-size: 13px !important; color: #52647d; }
+.system-settings .ant-form-item-extra { color: #9aa4b2; font-size: 11px; line-height: 19px; padding-top: 7px; min-height: 26px; }
+.system-settings .ant-input-number { width: 100%; height: 37px; }
+.system-settings .ant-input-number-input { height: 35px; }
+.system-settings .ant-input { min-height: 36px; }
+.settings-execution-note { border: 1px solid #e8edf5; border-radius: 6px; background: #f8fafc; padding: 14px 16px; margin-top: 5px; }
+.settings-execution-note strong { display: block; color: #667992; font-size: 12px; font-weight: 550; margin-bottom: 5px; }
+.settings-execution-note p { color: #8a98ab; font-size: 12px; line-height: 22px; }
+.settings-toggle { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; border-bottom: 1px solid #edf0f5; }
+.settings-toggle:first-child { padding-top: 0; }
+.settings-toggle > div { min-width: 0; }
+.settings-toggle strong { color: #52647d; font-size: 13px; font-weight: 500; }
+.settings-toggle p { color: #95a0af; font-size: 12px; line-height: 22px; margin-top: 6px; }
+.settings-toggle .ant-switch { flex-shrink: 0; }
+.settings-switch-list > .ant-btn { margin-top: 20px; }
+.settings-maintenance-interval { margin-top: 24px; }
+.settings-data-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0; }
+.settings-sidebar .panel { margin-bottom: 20px; }
+.settings-sidebar .settings-section-head { padding: 20px; }
+.settings-sidebar .ant-badge-status-text { font-size: 11px; color: #8191a5; }
+.settings-status-list { padding: 6px 20px; margin: 0; }
+.settings-status-list > div { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 15px 0; border-bottom: 1px solid #f0f2f6; font-size: 12px; }
+.settings-status-list > div:last-child { border-bottom: 0; }
+.settings-status-list dt { color: #95a0af; white-space: nowrap; }
+.settings-status-list dd { color: #657991; margin: 0; text-align: right; overflow-wrap: anywhere; }
+.settings-status-list .ant-tag { margin: 0; font-size: 11px; }
+.settings-links > button { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #f0f2f6; background: #fff; padding: 18px 20px; color: #617894; font-size: 12px; }
+.settings-links > button:last-child { border-bottom: 0; }
+.settings-links > button:hover { background: #f8faff; color: #2856dc; }
+.settings-links small { display: block; color: #9aa6b5; font-size: 11px; line-height: 18px; margin-top: 6px; }
+@media(max-width:1200px) { .settings-workspace { grid-template-columns: minmax(0,1fr) 285px; gap: 18px; } .settings-capacity { grid-template-columns: repeat(3,minmax(0,1fr)); } .settings-capacity > p { grid-column: 1/-1; border-top: 1px solid #edf0f5; padding-top: 14px; } .settings-capacity > div:nth-child(3) { border: 0; } .settings-fields { gap: 5px 18px; } }
+@media(max-width:1000px) { .settings-workspace { grid-template-columns: minmax(0,1fr); } .settings-sidebar { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; } .settings-sidebar .panel { margin-bottom: 0; } }
+@media(max-width:640px) { .settings-capacity { padding: 18px 14px; gap: 16px 10px; } .settings-capacity strong { font-size: 22px; } .settings-capacity > div > span { font-size: 10px; } .settings-capacity strong small { padding: 0; font-size: 14px; } .settings-capacity > p small { font-size: 10px; } .settings-section-head { padding: 18px 16px; } .settings-section-head p { font-size: 11px; } .settings-config > .ant-form > .ant-tabs > .ant-tabs-nav { padding: 0 16px; } .settings-config .ant-tabs-tab { font-size: 12px; padding: 14px 0; } .settings-config .ant-tabs-tab + .ant-tabs-tab { margin-left: 12px; } .settings-tab-body { padding: 20px 16px; } .settings-fields { grid-template-columns: 1fr; gap: 0; } .system-settings .ant-form-item-extra { min-height: 0; } .settings-sidebar { grid-template-columns: 1fr; gap: 0; } .settings-sidebar .panel { margin-bottom: 18px; } .settings-toggle { gap: 18px; } .settings-toggle p { font-size: 11px; } .system-settings .page-actions { flex-wrap: wrap; } .system-settings .page-actions .ant-btn { font-size: 11px; } .settings-execution-note { padding: 12px; } .settings-execution-note p { font-size: 11px; } }

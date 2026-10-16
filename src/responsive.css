@@ -1,0 +1,33 @@
+.page-actions { flex-wrap: wrap; }
+.mobile-menu-toggle { display: none; }
+.mobile-navigation { display: grid; gap: 6px; }
+.mobile-navigation button { display: flex; align-items: center; gap: 14px; min-height: 45px; padding: 10px 14px; border: 0; border-radius: 6px; background: white; color: #52647d; text-align: left; }
+.mobile-navigation button.active { background: #edf2ff; color: #2856dc; }
+.mobile-navigation .anticon { font-size: 18px; }
+.ant-drawer-body .ant-table-wrapper { max-width: 100%; overflow: auto; }
+.ant-modal-body { overflow-wrap: anywhere; }
+.checkout-check { flex-wrap: wrap; }
+.official-captcha-frame { width: 100%; max-width: 100%; height: 330px; border: 1px solid #e6eaf0; margin-top: 16px; }
+@media (max-width: 600px) {
+  .app-shell .sidebar { display: none; }
+  .app-shell .main-shell { margin-left: 0; }
+  .app-shell .topbar { position: sticky; top: 0; z-index: 40; gap: 12px; padding: 0 14px; }
+  .topbar .mobile-menu-toggle { display: inline-flex; flex-shrink: 0; font-size: 18px; }
+  .breadcrumb { flex: 1; min-width: 0; }
+  .topbar-right { margin-left: auto; }
+  .main-content { padding: 20px 12px 0; }
+  .page-actions { justify-content: flex-start; gap: 8px; }
+  .page-actions .ant-btn { padding-inline: 10px; }
+  .task-workspace .panel-head { height: auto; padding-block: 15px; flex-wrap: wrap; }
+  .task-workspace .panel-head .ant-select { width: 100% !important; }
+  .batch-heading > div:first-child { min-width: 0; }
+  .batch-heading h3 { flex-wrap: wrap; }
+  .batch-heading p { overflow-wrap: anywhere; }
+  .step-title { flex-wrap: wrap; gap: 6px; }
+  .step-title small { margin-left: 0; }
+  .checkout-item { gap: 12px; }
+  .checkout-item h3 { font-size: 14px; }
+  .ant-drawer-body { padding: 18px 14px; }
+  .ant-modal .ant-modal-content { padding: 20px 16px; }
+  .settings-section-head { flex-wrap: wrap; }
+}
